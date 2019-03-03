@@ -1,14 +1,18 @@
 % 1 volno
 % 0 prekazka
 
-
-a = [3,1];
+startPoint = [3,1];
+endPointOfMaze = [15,13];
 load('bludisko2');
-pop = genrPop(10,10,40,a);
-fit = Fitness(b,pop);
-[minFit,indx] = min(fit);
+pop = genrPop(10,5,40,startPoint);
 
-minRet = pop(indx,:);
+
+fit = Fitness(b,pop,endPointOfMaze);
+
+
+
+[minFit,indx] = min(fit);
+minRet = pop(indx,:)
 b=track(b,minRet);
 
 n=size(b,1);
