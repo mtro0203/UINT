@@ -1,12 +1,12 @@
 function [penalty] = Penalty(maze,Track,crossPen,endPointOfMaze)
 
 [a,ltrack] = size(Track);
-penalty = 1;
-current = 3;
+penalty = 1;    %penalizacia za prejdenie jedneho policka v bludisku
+current = 3; 
 
-endPointOfPath(1) = Track(ltrack-1);
-endPointOfPath(2) = Track(ltrack);
 
+%pridelovanie penalizacie za prejdenie cez steny, dlzku cesty a vzdialenost
+%od koncoveho bodu
 
 if(maze(Track(1),Track(2))==0)
     penalty = penalty + crossPen;
@@ -44,6 +44,10 @@ while(current <= ltrack)
     end              
     current = current + 2; 
 end
-penalty = penalty + Distance(endPointOfMaze,endPointOfPath) - (ltrack/2)+1;
+
+endPointOfPath(1) = Track(ltrack-1);
+endPointOfPath(2) = Track(ltrack);
+
+penalty = penalty + DistanceToEnd(endPointOfMaze,endPointOfPath) - (ltrack/2)+1;
 
 end

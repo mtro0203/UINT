@@ -1,4 +1,5 @@
 function [maze] = track(maze,bestTrack)
+%vykreslovanie jedinca do bludiska
 
 [a,ltrack] = size(bestTrack);
 current = 3;
